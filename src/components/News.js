@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import NewsItem from './NewsItem'
 import Spinner from './Spinner';
 import PropTypes from 'prop-types'
-import Slider from './Slider';
+
 export class News extends Component {
 
   static deafaultProps = {
@@ -73,14 +73,14 @@ export class News extends Component {
 
     return (
       <>
-      <Slider/>
+      {/* <Slider/> */}
       <div className='container my-3'>
         <h2 className='my-3 text-center'>News headlines</h2>
         {this.state.loading && <Spinner/>}
         <div className="row">
           {!this.state.loading && this.state.articles.map((e) => {
             return <div className="col-4 my-3" key={e.url}>
-              <NewsItem title={e.title} description={e.description} imgsrc={e.urlToImage} newsUrl={e.url} author={e.author?"Unknown":e.author} date={e.publishedAt}/>
+              <NewsItem title={e.title} description={e.description} imgsrc={!e.urlToImage?"https://plus.unsplash.com/premium_photo-1688561384438-bfa9273e2c00?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D":e.urlToImage} newsUrl={e.url} author={e.author?"Unknown":e.author} date={e.publishedAt}/>
             </div>
           })}
           {/* STATIC RENDERING
